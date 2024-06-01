@@ -40,9 +40,13 @@ class Search:
 
         URL = f"https://openlibrary.org/search.json?title={search_term_formatted}&fields={fields_formatted}&limit={limit}"
 
-        response = requests.get(URL).json()
-        response_formatted = f"Title: {response['docs'][0]['title']}\nAuthor: {response['docs'][0]['author_name'][0]}"
-        return response_formatted
+        # response = requests.get(URL).json()
+        # response_formatted = f"Title: {response['docs'][0]['title']}\nAuthor: {response['docs'][0]['author_name'][0]}"
+        # return response_formatted
+
+        results_json = Search().get_search_results_json()
+        # json.dumps formats the JSON object in a human readable format
+        print(json.dumps(results_json, indent=1))
 
 
 # results = Search().get_search_results()
